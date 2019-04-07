@@ -1,0 +1,34 @@
+# See man screen, section 'STRING ESCAPES'
+hardstatus alwayslastline "%{.Wk}%-w%{.bw}%n %t%{-}%+w %= %c"
+
+# Disable the startup message
+startup_message off
+
+# Set a large scrollback buffer
+defscrollback 32000
+
+# Always start `screen` with UTF-8 enabled (`screen -U`)
+defutf8 on
+
+msgwait 1
+
+vbell off
+
+# Ensure backspace gets produced under xfce-term
+bindkey -d ^@ stuff ^?
+bind x
+bind ^x
+
+# Override default escape command
+escape ^Ja
+
+# Custom screen shell open at start and select active
+screen -t rem 5
+screen -t log 4
+screen -t app 3
+screen -t con 2
+screen -t shl 1
+screen -t cfg 0
+select 1
+
+# vim: set filetype=screen :

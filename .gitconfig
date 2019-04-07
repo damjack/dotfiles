@@ -1,0 +1,333 @@
+# Git's configuration file.
+[user]
+  name = damjack
+  email = giacomello.damiano@gmail.com
+
+[core]
+  excludesfile = "~/.gitexcludes"
+
+[pretty]
+  # logging format: {{sha1}} ({{relevant branches}}) {{title line}} <{{author name, via mailmap}}>
+  # (see `git help log` under "PRETTY FORMATS")
+  tree = tformat:"%Cblue%h -%Creset%C(auto)%d %s <%C(bold green)%aN%Creset>"
+
+[alias]
+
+  ##
+  # One letter alias for our most frequent commands.
+  #
+  # Guidelines: these aliases do not use options, because we want
+  # these aliases to be easy to compose and use in many ways.
+  ##
+
+  a = add
+  b = branch
+  c = commit
+  d = diff
+  f = fetch
+  g = grep
+  l = log
+  m = merge
+  o = checkout
+  p = pull
+  r = remote
+  s = status
+  w = whatchanged
+
+  ##
+  # Short aliases for our frequent commands.
+  #
+  # Guidelines:
+  #
+  #  * Generally speaking, the alias should be in the same
+  #    order as the command name followed by its options.
+  #
+  #    * Right: fb = foo --bar
+  #    * Wrong: bf = foo --bar
+  ##
+
+  ### add ###
+
+  # add all
+  aa = add --all
+
+  # add by patch - looks at each change, and asks if we want to put it in the repo.
+  ap = add --patch
+
+  # add just the files that are updated.
+  au = add --update
+
+  ### branch ###
+
+  # branch - edit the description
+  be = branch --edit-description
+
+  # branch and only list branches whose tips are reachable from the specified commit (HEAD if not specified).
+  bm = branch --merged
+
+  # branch and only list branches whose tips are not reachable from the specified commit (HEAD if not specified).
+  bnm = branch --no-merged
+
+  ### commit ###
+
+  # commit - amend the tip of the current branch rather than creating a new commit.
+  ca = commit --amend
+
+  # commit - amend the tip of the current branch, and edit the message.
+  cam = commit --amend --message
+
+  # commit - amend the tip of the current branch, and do not edit the message.
+  cane = commit --amend --no-edit
+
+  # commit interactive
+  ci = commit --interactive
+
+  # commit with a message
+  cm = commit --message
+
+  ### checkout ###
+
+  # checkout - update the working tree to match a branch or paths. [same as "o" for "out"]
+  co = checkout
+  cot = !sh -c 'git checkout --track -b $0 origin/$0 && git pull'
+
+  ### diff ###
+
+  # diff - show changes not yet staged
+  dc = diff --cached
+
+  # diff - changes about to be commited
+  ds = diff --staged
+
+  # diff - show changes but by word, not line
+  dw = diff --word-diff
+
+  ### clean ###
+
+  # clean everything to be pristine
+  cleanest = clean -ffdx
+
+  ### fetch ###
+  fg = fetch --all --prune
+
+  ### grep ###
+
+  # find text
+  g = grep
+
+  # grep and show line number
+  gl =  grep --line-number
+
+  # grep group: find text and group the output lines; a.k.a. `grep-group`.
+  gg =  grep --break --heading --line-number
+
+  ### log ###
+
+  # log with a text-based graphical representation of the commit history.
+  lg = log --graph
+
+  # log with one line per item.
+  lo = log --oneline
+
+  # log with patch generation.
+  lp = log --patch
+
+  # log with items appearing in topological order, i.e. descendant commits are shown before their parents.
+  lt = log --topo-order
+
+  # log key - our favorite way to show our key performance indicators, i.e. our most useful summary.
+  lk = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset %Cblue%G?%Creset'
+
+  # log latest - show the 10 most recent lines using `lk`
+  ll = log -n 10 --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad'
+
+  # show all branches as a graph
+  tree                = log --all --graph --pretty=tree --abbrev-commit --decorate
+
+  ## ls-files ##
+
+  # ls-files - show information about files in the index and the working tree; like Unix "ls" command.
+  ls = ls-files
+
+  # ls-ignored -  list files that git has ignored.
+  ls-ignored = ls-files --others --i --exclude-standard
+
+  ### merge ###
+
+  # merge but without autocommit, and with a commit even if the merge resolved as a fast-forward.
+  mec = merge --no-commit --no-ff
+  me = merge --no-edit --no-ff
+
+  ### pull ###
+
+  # pull if a merge can be resolved as a fast-forward, otherwise fail.
+  pf = pull --ff-only
+
+  # pull with rebase - to provide a cleaner, linear, bisectable history.
+  #
+  # To integrate changes between branches, you can merge or rebase.
+  #
+  # When we use "git pull", git does a fetch then a merge.
+  # If we've made changes locally and someone else has pushed changes
+  # to our git host then git will automatically merge these together
+  # and create a merge commit that looks like this in the history:
+  #
+  #    12345678 - Merge branch 'foo' of bar into master
+  #
+  # When we use "git pull --rebase", git does a fetch then a rebase.
+  # A rebase resets the HEAD of your local branch to be the same as
+  # the remote HEAD, then replays your local commits back into repo.
+  # This means you don't get any noisy merge messages in your history.
+  # This gives us a linear history, and also helps with git bisect.
+  #
+  # To automatically do "pull --rebase" for any branch based on master:
+  #
+  #    git config branch.master.rebase true
+  #
+  # To automatically do "pull --rebase" for all branches:
+  #
+  #     git config --global branch.autosetuprebase always
+  #
+  pr = pull --rebase
+
+  ### push ###
+
+  pus = !sh -c 'git push origin +$0:staging'
+
+  ### rebase ###
+
+  # rebase - forward-port local commits to the updated upstream head.
+  rb = rebase
+
+  # rebase - continue the rebasing process after resolving a conflict manually and updating the index with the resolution.
+  rbc = rebase --continue
+
+  # rebase - restart the rebasing process by skipping the current patch.
+  rbs = rebase --skip
+
+  # rbi - rebase interactive on our unpushed commits.
+  #
+  # Before we push our local changes, we may want to do some cleanup,
+  # to improve our commit messages or squash related commits together.
+  #
+  # Let's say I've pushed two commits that are related to a new feature and
+  # I have another where I made a spelling mistake in the commit message.
+  # When I run "git rbi" I get dropped into my editor with this:
+  #
+  #     pick 7f06d36 foo
+  #     pick ad544d0 goo
+  #     pick de3083a hoo
+  #
+  # Let's say I want to squash the "foo" and "goo" commits together,
+  # and also change "hoo" to say "whatever". To do these, I change "pick"
+  # to say "s" for squash; this tells git to squash the two together;
+  # I also edit "hoo". I make the file look like:
+  #
+  #     pick 7f06d36 foo
+  #     s ad544d0 goo
+  #     r de3083a whatever
+  # This gives me two new commit messages to edit, which I update.
+  # Now when I push the remote repo host receives two commits
+  #
+  #     3400455 - foo
+  #     5dae0a0 - whatever
+  #
+  rbi = rebase --interactive @{upstream}
+
+	### revert ###
+
+  # revert - undo the changes from some existing commits
+  rv = revert
+
+  # revert without autocommit; useful when you're reverting more than one commits' effect to your index in a row.
+  rvnc = revert --no-commit
+
+	### status ###
+
+  # status with short format instead of full details
+  ss = status --short
+
+  # status with short format and showing branch and tracking info.
+  ssb = status --short --branch
+
+	##
+  # Reset & Undo
+  ##
+
+  # Reset and undo aliases are ways to move backwards on the commit chain.
+  # We find that novices prefer the wording "undo"; experts prefer "reset".
+  reset-commit       = reset --soft HEAD~1
+  reset-commit-hard  = reset --hard HEAD~1
+  reset-commit-clean = !git reset --hard HEAD~1 && git clean -fd
+  reset-to-pristine   = !git reset --hard && git clean -ffdx
+  reset-to-upstream  = !git reset --hard $(git upstream-name)
+
+  # Undo is simply a synonym for "reset" because "undo" can help novices.
+  undo-commit        = reset --soft HEAD~1
+  undo-commit-hard   = reset --hard HEAD~1
+  undo-commit-clean  = !git reset --hard HEAD~1 && git clean -fd
+  undo-to-pristine   = !git reset --hard && git clean -ffdx
+  undo-to-upstream   = !git reset --hard $(git upstream-name)
+
+  # Nicknames
+  uncommit = reset --soft HEAD~1
+  unadd = reset HEAD
+  unstage = reset HEAD
+
+  # Discard changes in a (list of) file(s) in working tree
+  discard = checkout --
+
+	### GitK ###
+
+  # show conflicting merge in gitk:
+  gitk-conflict = !gitk --left-right HEAD...MERGE_HEAD
+
+  # show full history in gitk (including "deleted" branches and stashes)
+  gitk-history-all = !gitk --all $( git fsck | awk '/dangling commit/ {print $3}' )
+
+  ### Ruby on Rails ###
+
+  # Do everything we can to synchronize all changes for a Ruby On Rails app.
+  # We like using rebase (instead of merge), bundle for gems, and rake db:migrate
+  rails-get = !"git pull --rebase; git submodule update --init --recursive; bundle check || bundle install; bundle exec rake db:migrate; bundle exec rake db:test:prepare"
+
+  ### Use with shell alias `gitp = git` ###
+
+  ull = pull
+  ush = push
+
+# Use colors in Git commands
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = red
+
+# URL shorthands
+[url "git@github.com:"]
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+  insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+  insteadOf = "gist:"
+[push]
+  default = current

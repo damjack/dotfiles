@@ -1,0 +1,79 @@
+# Node
+npm-debug.log
+
+# Mac
+!.keep
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+ehthumbs.db
+Thumbs.db
+
+# WebStorm
+.idea/
+
+# Vim
+.netrwhist
+*~
+Session.vim
+
+# Emacs
+/.emacs.desktop
+/.emacs.desktop.lock
+
+# TextMate
+*.tmproj
+*.tmproject
+tmtags
+
+# General
+.\#*
+\#*\#
+/log/
+!/log/.keep
+*.log
+*.sql
+*.sqlite
+.env
+
+# Packages
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Rails
+/.bundle/
+/.byebug_history
+/env
+/db/*.sqlite3
+/node_modules/
+/storage/
+.rake-builder
+.rubocop-http*
+.rspec
+TAGS
+yarn-error.log
+# if using bower-rails ignore default bower_components path bower.json files
+/vendor/assets/bower_components
+*.bowerrc
+bower.json
+
+# Elixir
+/_build
+/cover
+/deps
+erl_crash.dump
+*.ez
+*.beam
+/config/*.secret.exs
