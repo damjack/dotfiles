@@ -37,6 +37,15 @@ let mapleader="\<SPACE>"
 
   " Tell Vim which characters to show for expanded TABs, trailing whitespace, and end-of-lines
   set listchars=trail:·,precedes:«,extends:»,tab:→\
+
+  " insert tabs on the start of a line according to shiftwidth, not tabstop
+  set smarttab
+
+  " highlight search terms
+  set hlsearch
+
+  " show search matches as you type
+  set incsearch
 " }
 
 " Keybindings {
@@ -64,6 +73,12 @@ nnoremap <Leader>l :FZF<CR>
 
 set splitbelow
 set splitright
+
+set history=1000         " remember more commands and search history
+set undolevels=1000      " use many muchos levels of undo
+set title                " change the terminal's title
+set visualbell           " don't beep
+set noerrorbells         " don't beep
 
 " Move beetwen buffer
 nmap <BS> <C-W><C-H>
