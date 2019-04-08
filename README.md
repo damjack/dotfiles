@@ -8,9 +8,11 @@ Clone the repo...
 
 Make your appropriate changes, and then...
 
-`./install.sh`
-
-`./brew.sh`
+```sh
+$ ./bootstrap.sh
+$ ./brew.sh
+$ ./vim.sh
+```
 
 Have fun!
 
