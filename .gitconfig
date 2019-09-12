@@ -1,4 +1,4 @@
-# Git's configuration file.
+# This is Git's per-user configuration file.
 [user]
   name = damjack
   email = giacomello.damiano@gmail.com
@@ -53,6 +53,9 @@
 
   # add by patch - looks at each change, and asks if we want to put it in the repo.
   ap = add --patch
+
+  # add all files but not completly tracking
+  an = add -N --all
 
   # add just the files that are updated.
   au = add --update
@@ -232,7 +235,8 @@
   #     3400455 - foo
   #     5dae0a0 - whatever
   #
-  rbi = rebase --interactive @{upstream}
+  # rbi = rebase --interactive @{upstream}
+  rbi = rebase --interactive
 
 	### revert ###
 
@@ -277,6 +281,13 @@
   # Discard changes in a (list of) file(s) in working tree
   discard = checkout --
 
+	### Untracked ###
+  untracked           = "!f() {\
+                           local path=${1:-.}; \
+                           local matches=\"`git clean -nffdx $path`\"; \
+                           echo \"$matches\" | sed -r \"s/Would\\ remove\\ //\"; \
+                         }; f"
+
 	### GitK ###
 
   # show conflicting merge in gitk:
@@ -309,7 +320,7 @@
   new = green bold
 
 [color "status"]
-  added = yellow
+  added = blue
   changed = green
   untracked = red
 
@@ -331,3 +342,6 @@
   insteadOf = "gist:"
 [push]
   default = current
+[pull]
+  default = current
+  rebase = true
