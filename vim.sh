@@ -25,5 +25,6 @@ git clone https://github.com/maksimr/vim-jsbeautify.git ~/.vim/bundle/vim-jsbeau
 git clone https://github.com/vim-ruby/vim-ruby.git ~/.vim/bundle/vim-ruby
 git clone https://github.com/tpope/vim-sensible.git ~/.vim/bundle/vim-sensible
 git clone https://github.com/slim-template/vim-slim.git ~/.vim/bundle/vim-slim
+git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
 
 echo "All plugins added correctly"

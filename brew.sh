@@ -59,6 +59,7 @@ PACKAGES=(
   oniguruma
   openssl
   pcre
+  pcre2
   perl
   pkg-config
   postgresql
@@ -83,6 +84,7 @@ PACKAGES=(
   wget
   xz
   yarn
+  z
 )
 
 echo "Installing packages..."
