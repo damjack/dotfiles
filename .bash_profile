@@ -27,3 +27,5 @@ load-nvmrc
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+export PATH=./bin:./bin/stubs:$PATH
