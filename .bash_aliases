@@ -9,6 +9,7 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 #alias grep="ggrep"
 #alias awk="/usr/local/Cellar/awk/20180827/bin/awk"
 alias g="git"
+alias e="vim ."
 
 # alias for listing
 alias ll="ls -lah"
@@ -51,10 +52,8 @@ alias oo="open ."
 alias sudo="sudo "
 
 # alias for project
-alias p="cd ~/Sites"
-alias pcgl="cd ~/Sites/gitlab"
-alias pcbb="cd ~/Sites/bitbucket"
-alias pcgh="cd ~/Sites/github"
+alias s="cd ~/Sites"
+alias sp="cd ~/Sites/primait"
 
 # alias for ruby
 alias bi="bundle install"
@@ -78,3 +77,11 @@ alias xget="mix deps.get"
 
 # alias for brew
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+
+# alias for docker
+alias d="docker"
+alias dc="docker-compose"
+alias drp="docker-compose run --service-ports"
+
+# alias for git command
+alias gup="g fg; g pf"
