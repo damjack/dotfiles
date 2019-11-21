@@ -16,9 +16,11 @@ fi
 brew update
 
 PACKAGES=(
+  asdf
   autoconf
   awk
   automake
+  coreutils
   elasticsearch
   fontconfig
   freetype
@@ -49,6 +51,7 @@ PACKAGES=(
   libtool
   libunistring
   libyaml
+  libxslt
   markdown
   memcached
   mysql
@@ -79,6 +82,7 @@ PACKAGES=(
   the_silver_searcher
   terminal-notifier
   tig
+  unixodbc
   vim
   webp
   wget
