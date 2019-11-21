@@ -1,3 +1,6 @@
+# Asdf
+.tool-versions
+
 # Node
 npm-debug.log
 
@@ -20,6 +23,7 @@ Thumbs.db
 .netrwhist
 *~
 Session.vim
+*.swp
 
 # Emacs
 /.emacs.desktop
@@ -36,7 +40,6 @@ tmtags
 /log/
 !/log/.keep
 *.log
-*.sql
 *.sqlite
 .env
 
@@ -77,3 +80,6 @@ erl_crash.dump
 *.ez
 *.beam
 /config/*.secret.exs
+
+# Docker + Mutagen
+/mutadocker
