@@ -13,10 +13,17 @@ if [ $? -ne 0 ]; then
   read -p "Press any key to continue. Ctrl-C to abort."
 fi
 
+cp .bash_profile ~/.bash_profile
+cp .bash_aliases ~/.bash_aliases
+
 if ! command -v brew >/dev/null; then
   echo "==> Installing Homebrew ..."
   ./brew.sh
 fi
+
+cp .gitconfig ~/.gitconfig
+cp .gitexcludes ~/.gitexcludes
+cp .screenrc ~/.screenrc
 
 if command -v asdf > /dev/null; then
   asdf plugin-add elixir elm erlang golang helm nodejs python ruby rust
@@ -24,3 +31,5 @@ fi
 
 echo "==> Installing Vim Bundle ..."
 ./vim.sh
+
+echo "==> Installing NPM Global Package ..."

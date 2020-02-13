@@ -82,6 +82,17 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 alias d="docker"
 alias dc="docker-compose"
 alias drp="docker-compose run --service-ports"
+dcbuild() {
+  docker-compose -p "$1" build;
+}
+
+dcgo() {
+  docker-compose -p "$1" run --service-ports web bash;
+}
+
+dcstop() {
+  docker-compose -p "$1" down;
+}
 
 # alias for git command
 alias gup="g fg; g pf"

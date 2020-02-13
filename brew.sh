@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Notes:
 #
 # - If installing full Xcode, it's better to install that first from the app
