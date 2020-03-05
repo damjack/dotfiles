@@ -8,6 +8,6 @@ if test ! $(which npm); then
   exit 1
 fi
 
-npm install -g elm elm-format elm-oracle elm-test oclif @elm-tooling/elm-language-server
+yarn global add elm elm-format elm-oracle elm-test oclif @elm-tooling/elm-language-server serve cypress
 
 echo "Global package added to the system"

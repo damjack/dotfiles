@@ -35,6 +35,7 @@ PACKAGES=(
   graphicsmagick
   graphviz
   grep
+  grip
   heroku
   heroku-node
   icu4c
@@ -58,6 +59,7 @@ PACKAGES=(
   memcached
   mysql
   mongodb
+  mutagen-io/mutagen/mutagen
   nmap
   node
   nvm

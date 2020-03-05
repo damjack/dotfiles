@@ -32,4 +32,5 @@ fi
 echo "==> Installing Vim Bundle ..."
 ./vim.sh
 
-echo "==> Installing NPM Global Package ..."
+echo "==> Installing YARN Global Package ..."
+./yarn.sh
