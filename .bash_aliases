@@ -9,7 +9,9 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 #alias grep="ggrep"
 #alias awk="/usr/local/Cellar/awk/20180827/bin/awk"
 alias g="git"
+alias gup="g fg; g pf"
 alias e="vim ."
+alias tarx="tar -cf - $1 | xz -9 -c - > $1.tar.xz"
 
 # alias for listing
 alias ll="ls -lah"
@@ -23,6 +25,7 @@ alias du="du -h"
 alias cp="cp -v"
 alias mv="mv -v"
 alias rm="rm -v"
+alias rf="rm -rf"
 alias mkdir='mkdir -pv'
 alias less='less -FSRXc'
 
@@ -51,10 +54,6 @@ alias o="open"
 alias oo="open ."
 alias sudo="sudo "
 
-# alias for project
-alias s="cd ~/Sites"
-alias sp="cd ~/Sites/primait"
-
 # alias for ruby
 alias bi="bundle install"
 
@@ -62,18 +61,18 @@ alias bi="bundle install"
 alias rs="rails s"
 alias rc="rails c"
 alias rg="rails g"
-alias empty_db='rake db:drop; rake db:create; rake db:migrate'
-alias seed_db='rake db:seed'
-alias reset_db='empty_db; seed_db'
+alias rail_drop='rake db:drop; rake db:create; rake db:migrate'
+alias rails_seed='rake db:seed'
+alias rails_reset='empty_db; seed_db'
 
 # alias for heroku
 alias h="heroku"
 alias hlog='heroku logs --tail'
 
 # alias for elixir
-alias xcompile="mix compile"
-alias xconsole="mix -S iex"
-alias xget="mix deps.get"
+alias xcomp="mix compile"
+alias xiex="mix -S iex"
+alias xdeps="mix deps.get"
 
 # alias for brew
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
@@ -82,6 +81,7 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 alias d="docker"
 alias dc="docker-compose"
 alias drp="docker-compose run --service-ports"
+
 dcbuild() {
   docker-compose -p "$1" build;
 }
@@ -93,6 +93,3 @@ dcgo() {
 dcstop() {
   docker-compose -p "$1" down;
 }
-
-# alias for git command
-alias gup="g fg; g pf"

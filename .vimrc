@@ -143,11 +143,11 @@ let g:ale_elixir_elixir_ls_release = '~/.vim/external/elixir-ls/rel'
 let g:ale_sign_column_always = 1
 
 let g:ale_elm_ls_use_global = 1
-let g:ale_elm_ls_executable = "/Users/damjack/.asdf/shims/elm-language-server"
+let g:ale_elm_ls_executable = "~/.asdf/shims/elm-language-server"
 let g:ale_elm_ls_elm_analyse_trigger = 'change'
-let g:ale_elm_ls_elm_path = "/Users/damjack/.asdf/shims/elm"
-let g:ale_elm_ls_elm_format_path = "/Users/damjack/.asdf/shims/elm-format"
-let g:ale_elm_ls_elm_test_path = "/Users/damjack/.asdf/shims/elm-test"
+let g:ale_elm_ls_elm_path = "~/.asdf/shims/elm"
+let g:ale_elm_ls_elm_format_path = "~/.asdf/shims/elm-format"
+let g:ale_elm_ls_elm_test_path = "~/.asdf/shims/elm-test"
 
 " Ale
 nnoremap <Leader>g :ALEGoToDefinition<Return>
