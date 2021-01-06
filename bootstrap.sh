@@ -29,8 +29,11 @@ if command -v asdf > /dev/null; then
   asdf plugin-add elixir elm erlang golang helm nodejs python ruby rust
 fi
 
+echo "==> Installing YARN Global Package ..."
+./yarn.sh
+
 echo "==> Installing Vim Bundle ..."
 ./vim.sh
 
-echo "==> Installing YARN Global Package ..."
-./yarn.sh
+echo "==> Installing ASDF Package Manager ..."
+./asdf.sh
