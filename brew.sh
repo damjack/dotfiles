@@ -18,7 +18,6 @@ fi
 brew update
 
 PACKAGES=(
-  asdf
   autoconf
   awk
   automake
@@ -61,8 +60,6 @@ PACKAGES=(
   mongodb
   mutagen-io/mutagen/mutagen
   nmap
-  node
-  nvm
   oniguruma
   openssl
   pcre
@@ -75,23 +72,19 @@ PACKAGES=(
   python3
   qt
   qt@5.5
-  rbenv
   readline
   redis
-  ruby
-  ruby-build
-  rust
   saxon
   sqlite
   the_silver_searcher
   terminal-notifier
   tig
+  tmux
   unixodbc
   vim
   webp
   wget
   xz
-  yarn
   z
 )
 
