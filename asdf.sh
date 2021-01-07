@@ -3,14 +3,18 @@
 echo "Starting ASDF..."
 
 # Check for Homebrew, install if we don't have it
-if test $(which asdf); then
-  echo "You remove asdf with brew..."
-  exit 1
+if command -v asdf > /dev/null; then
+  echo "You remove asdf if you install it with brew..."
+  read -p "Press any key to continue. Ctrl-C to abort."
 fi
 
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-cd ~/.asdf
-git checkout "$(git describe --abbrev=0 --tags)"
+# Check for Homebrew, install if we don't have it
+if test ! $(which asdf); then
+  echo "Installing asdf..."
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+  cd ~/.asdf
+  git checkout "$(git describe --abbrev=0 --tags)"
+fi
 
 echo "# Add ASDF" >> ~/.bash_profile
 echo ". $HOME/.asdf/asdf.sh" >> ~/.bash_profile

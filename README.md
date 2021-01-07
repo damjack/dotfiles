@@ -10,8 +10,6 @@ Make your appropriate changes, and then...
 
 ```sh
 $ ./bootstrap.sh
-$ ./brew.sh
-$ ./vim.sh
 ```
 
 Have fun!

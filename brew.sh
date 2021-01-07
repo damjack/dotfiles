@@ -10,6 +10,8 @@ echo "Starting Brew..."
 
 # Check for Homebrew, install if we don't have it
 if test ! $(which brew); then
+  echo "Test to check if Xcode is installed"
+  xcode-select --install
   echo "Installing homebrew..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi

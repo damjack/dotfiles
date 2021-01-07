@@ -3,8 +3,8 @@
 echo "Starting Npm..."
 
 # Check for Homebrew, install if we don't have it
-if test ! $(which npm); then
-  echo "You run after npm..."
+if test ! $(which yarn); then
+  echo "You run after brew..."
   exit 1
 fi
 

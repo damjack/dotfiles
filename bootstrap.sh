@@ -25,10 +25,6 @@ cp .gitconfig ~/.gitconfig
 cp .gitexcludes ~/.gitexcludes
 cp .screenrc ~/.screenrc
 
-if command -v asdf > /dev/null; then
-  asdf plugin-add elixir elm erlang golang helm nodejs python ruby rust
-fi
-
 echo "==> Installing YARN Global Package ..."
 ./yarn.sh
 
