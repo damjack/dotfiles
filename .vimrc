@@ -95,9 +95,6 @@ nnoremap <Leader>t :tabedit
 " Remap key fro exit insert mode
 :imap §1 <Esc>
 
-" Enable python syntax
-let g:python_highlight_all = 1
-
 " Disable autoformat Vim
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
@@ -121,6 +118,7 @@ let g:elm_setup_keybindings = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
+" Ale Settings
 let g:ale_linters = {}
 let g:ale_linters.javascript = ['prettier']
 let g:ale_linters.scss = ['stylelint']
@@ -142,6 +140,10 @@ let g:ale_fixers.elixir = ['mix_format']
 let g:ale_elixir_elixir_ls_release = '~/.vim/external/elixir-ls/rel'
 let g:ale_sign_column_always = 1
 
+" Ale custom settings to Rust
+let g:ale_rust_cargo_use_clippy = 1
+
+" Ale custom settings to ELM
 let g:ale_elm_ls_use_global = 1
 let g:ale_elm_ls_executable = "~/.asdf/shims/elm-language-server"
 let g:ale_elm_ls_elm_analyse_trigger = 'change'
@@ -149,7 +151,6 @@ let g:ale_elm_ls_elm_path = "~/.asdf/shims/elm"
 let g:ale_elm_ls_elm_format_path = "~/.asdf/shims/elm-format"
 let g:ale_elm_ls_elm_test_path = "~/.asdf/shims/elm-test"
 
-" Ale
 nnoremap <Leader>g :ALEGoToDefinition<Return>
 nnoremap <Leader>ggt :ALEGoToDefinitionInTab<Return>
 nnoremap <Leader>gt :ALEGoToTypeDefinition<Return>

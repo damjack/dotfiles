@@ -165,6 +165,7 @@
 
   # pull if a merge can be resolved as a fast-forward, otherwise fail.
   pf = pull --ff-only
+  pfs = pull --ff-only --recurse-submodules
 
   # pull with rebase - to provide a cleaner, linear, bisectable history.
   #
@@ -196,6 +197,7 @@
   ### push ###
 
   pus = !sh -c 'git push origin +$0:staging'
+  push = push -u
 
   ### rebase ###
 
