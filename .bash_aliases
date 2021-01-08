@@ -79,17 +79,42 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 
 # alias for docker
 alias d="docker"
+alias dv="docker volume"
+alias di="docker image"
 alias dc="docker-compose"
 alias drp="docker-compose run --service-ports"
+docker-clean-all() {
+  docker volume ls | awk '!/(code|DRIVER|VOLUME|NAME)$/ { print }' | xargs docker volume rm >> /dev/null;
+  docker image ls | awk '{print $3 " "$4}' | awk '/([1-2][0-9])$/ {print $1}' | xargs docker rmi >> /dev/null;
+}
+docker-clean-volumes() {
+  docker volume ls | awk '!/(code|DRIVER|VOLUME|NAME)$/ { print }' | xargs docker volume rm >> /dev/null;
+}
 
-dcbuild() {
+dc_mutagen() {
+  # $3: Path of projectto use mutagen
+  # $2: Name of service Ex. php_web
+  # $1: User default to docker container Ex. app
+  mutagen sync create "$3" docker://"$1"@"$2"/code;
+}
+
+dc_build() {
+  # $1: Project name Ex. my-project
   docker-compose -p "$1" build;
 }
 
-dcgo() {
-  docker-compose -p "$1" run --service-ports web bash;
+dc_run() {
+  # $2: Name of service EX. php_web
+  # $1: Project name Ex. my-project
+  docker-compose -p "$1" run --rm --name "$2" --service-ports web bash;
 }
 
-dcstop() {
-  docker-compose -p "$1" down;
+dc_-up() {
+  # $1: Project name Ex. my-project
+  docker-compose -p "$1" up web --build -d;
+}
+
+dc_down() {
+  # $1: Project name Ex. my-project
+  docker-compose -p "$1" down --remove-orphans --volumes;
 }
