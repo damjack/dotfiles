@@ -16,10 +16,20 @@ fi
 cp .bash_profile ~/.bash_profile
 cp .bash_aliases ~/.bash_aliases
 
-if ! command -v brew >/dev/null; then
-  echo "==> Installing Homebrew ..."
-  ./brew.sh
+if ! command -v brew >/dev/null 2>&1; then
+  printf "\nInstalling Brew\n"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew analytics off
 fi
+
+printf "\nUpdating Brew\n"
+brew update
+brew upgrade
+
+printf "\nInstalling Brew Packages\n"
+set +e # Some packages may no longer be available
+brew bundle
+set -e
 
 cp .gitconfig ~/.gitconfig
 cp .gitexcludes ~/.gitexcludes
