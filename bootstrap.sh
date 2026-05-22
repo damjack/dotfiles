@@ -8,7 +8,7 @@ if [ $? -ne 0 ]; then
   ssh-keygen -t rsa -b 4096 -C "$1"
 
   # wait for the user to add it to github
-  pbcopy < ~/.ssh/id_rsa.pub
+  pbcopy <~/.ssh/id_rsa.pub
   echo "Login into your Github/Gitlab/Bitbucket or/and other git repository system online to add the key generated"
   read -p "Press any key to continue. Ctrl-C to abort."
 fi
@@ -24,12 +24,6 @@ fi
 cp .gitconfig ~/.gitconfig
 cp .gitexcludes ~/.gitexcludes
 cp .screenrc ~/.screenrc
-
-echo "==> Installing YARN Global Package ..."
-./yarn.sh
-
-echo "==> Installing Vim Bundle ..."
-./vim.sh
 
 echo "==> Installing ASDF Package Manager ..."
 ./asdf.sh
